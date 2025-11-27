@@ -9,12 +9,15 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.app.examen_tc2007b.presentation.common.HeatmapCalendar
 
+import androidx.compose.ui.platform.LocalContext
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    val context = LocalContext.current
     var expanded by remember { mutableStateOf(false) }
     val countries = listOf("Canada", "Albania")
     var selectedCountry by remember { mutableStateOf("") }
@@ -111,7 +114,16 @@ fun HomeScreen(
                             )
                         }
                     }
-                    HeatmapCalendar(data = uiState.data)
+                    HeatmapCalendar(
+                        data = uiState.data,
+                        onDateClick = { stats ->
+                            android.widget.Toast.makeText(
+                                context,
+                                "${stats.date}: ${stats.newCases} cases",
+                                android.widget.Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    )
                 } else {
                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                         Text("Select a country to view data")

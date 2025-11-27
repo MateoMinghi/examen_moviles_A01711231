@@ -1,6 +1,7 @@
 package com.app.examen_tc2007b.presentation.common
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -18,7 +19,10 @@ import androidx.compose.ui.unit.sp
 import com.app.examen_tc2007b.domain.model.CovidStats
 
 @Composable
-fun HeatmapCalendar(data: List<CovidStats>) {
+fun HeatmapCalendar(
+    data: List<CovidStats>,
+    onDateClick: (CovidStats) -> Unit
+) {
     val maxCases = data.maxOfOrNull { it.newCases } ?: 1
 
     LazyVerticalGrid(
@@ -28,13 +32,21 @@ fun HeatmapCalendar(data: List<CovidStats>) {
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         items(data) { stats ->
-            HeatmapItem(stats = stats, maxCases = maxCases)
+            HeatmapItem(
+                stats = stats, 
+                maxCases = maxCases,
+                onDateClick = onDateClick
+            )
         }
     }
 }
 
 @Composable
-fun HeatmapItem(stats: CovidStats, maxCases: Int) {
+fun HeatmapItem(
+    stats: CovidStats, 
+    maxCases: Int,
+    onDateClick: (CovidStats) -> Unit
+) {
     // Calculate color intensity based on new cases
     val intensity = (stats.newCases.toFloat() / maxCases.toFloat()).coerceIn(0f, 1f)
     val color = Color.Red.copy(alpha = 0.1f + (intensity * 0.9f))
@@ -44,6 +56,7 @@ fun HeatmapItem(stats: CovidStats, maxCases: Int) {
             .size(40.dp)
             .clip(RoundedCornerShape(4.dp))
             .background(color)
+            .clickable { onDateClick(stats) }
             .padding(2.dp),
         contentAlignment = Alignment.Center
     ) {
