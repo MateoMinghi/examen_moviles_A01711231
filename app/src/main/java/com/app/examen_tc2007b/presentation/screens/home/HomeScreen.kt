@@ -99,6 +99,7 @@ fun HomeScreen(
                     Text(
                         text = "COVID-19 Heatmap",
                         style = MaterialTheme.typography.titleLarge,
+                        color = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.padding(bottom = 8.dp)
                     )
                     if (uiState.isOffline) {

@@ -78,6 +78,7 @@ fun DateScreen(
                     Text(
                         text = "Top Countries by New Cases",
                         style = MaterialTheme.typography.titleLarge,
+                        color = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.padding(bottom = 8.dp)
                     )
                     HorizontalBarChart(data = uiState.data)
