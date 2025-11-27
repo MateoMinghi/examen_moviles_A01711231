@@ -53,4 +53,15 @@ class CovidRepositoryImpl @Inject constructor(
     override suspend fun getLastCountry(): String? {
         return preferences.getLastCountry()
     }
+
+    override suspend fun getCovidDataByDate(date: String): Flow<Result<List<CovidStats>>> = flow {
+        emit(Result.Loading)
+        try {
+            val response = api.getDataByDate(date)
+            val stats = response.map { it.toDomain(date) }
+            emit(Result.Success(stats))
+        } catch (e: Exception) {
+            emit(Result.Error("Error fetching date data: ${e.message}", e))
+        }
+    }
 }

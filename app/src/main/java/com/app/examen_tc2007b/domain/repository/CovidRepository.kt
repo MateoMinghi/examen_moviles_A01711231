@@ -7,4 +7,5 @@ import kotlinx.coroutines.flow.Flow
 interface CovidRepository {
     suspend fun getCovidStats(country: String): Flow<Result<List<CovidStats>>>
     suspend fun getLastCountry(): String?
+    suspend fun getCovidDataByDate(date: String): Flow<Result<List<CovidStats>>>
 }
