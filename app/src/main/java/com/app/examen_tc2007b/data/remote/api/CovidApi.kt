@@ -9,6 +9,6 @@ interface CovidApi {
     @GET("covid19")
     suspend fun getCovidStats(
         @Query("country") country: String,
-        @Header("X-Api-Key") apiKey: String = "wLVPN1zV08lJYF7uXqgyPw==zVwp6TlVcAO1NLUf"
+        @Header("X-Api-Key") apiKey: String = "rozPOy85/OvfIJyvhWQ7Zg==hwIiPTKtIkVXg7Gq"
     ): List<CovidCountryDto>
 }
