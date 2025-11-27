@@ -98,6 +98,19 @@ fun HomeScreen(
                         style = MaterialTheme.typography.titleLarge,
                         modifier = Modifier.padding(bottom = 8.dp)
                     )
+                    if (uiState.isOffline) {
+                        Card(
+                            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.errorContainer),
+                            modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
+                        ) {
+                            Text(
+                                text = "Offline Mode: Showing cached/mock data",
+                                color = MaterialTheme.colorScheme.onErrorContainer,
+                                modifier = Modifier.padding(8.dp),
+                                style = MaterialTheme.typography.bodyMedium
+                            )
+                        }
+                    }
                     HeatmapCalendar(data = uiState.data)
                 } else {
                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {

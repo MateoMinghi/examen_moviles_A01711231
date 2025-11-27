@@ -31,7 +31,7 @@ class CovidRepositoryImpl @Inject constructor(
 
             // Map to domain
             val stats = response.flatMap { it.toDomain() }
-            emit(Result.Success(stats))
+            emit(Result.Success(stats, isOffline = false))
         } catch (e: Exception) {
             // Try to load from cache if API fails
             val cachedJson = preferences.getLastJson()
@@ -40,12 +40,21 @@ class CovidRepositoryImpl @Inject constructor(
                     val type = object : TypeToken<List<CovidCountryDto>>() {}.type
                     val cachedResponse: List<CovidCountryDto> = gson.fromJson(cachedJson, type)
                     val stats = cachedResponse.flatMap { it.toDomain() }
-                    emit(Result.Success(stats)) // Or maybe emit a specific "CachedSuccess" if needed, but Success is fine for now
+                    emit(Result.Success(stats, isOffline = true))
                 } catch (cacheError: Exception) {
                     emit(Result.Error("Error loading cache: ${cacheError.message}", cacheError))
                 }
             } else {
-                emit(Result.Error("Network error and no cache available: ${e.message}", e))
+                // Fallback to Mock Data if no cache available
+                try {
+                    val mockJson = preferences.getMockJson()
+                    val type = object : TypeToken<List<CovidCountryDto>>() {}.type
+                    val mockResponse: List<CovidCountryDto> = gson.fromJson(mockJson, type)
+                    val stats = mockResponse.flatMap { it.toDomain() }
+                    emit(Result.Success(stats, isOffline = true))
+                } catch (mockError: Exception) {
+                     emit(Result.Error("Network error and no cache/mock available: ${e.message}", e))
+                }
             }
         }
     }

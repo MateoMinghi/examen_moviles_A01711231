@@ -16,7 +16,8 @@ data class HomeUiState(
     val isLoading: Boolean = false,
     val data: List<CovidStats> = emptyList(),
     val error: String? = null,
-    val lastCountry: String? = null
+    val lastCountry: String? = null,
+    val isOffline: Boolean = false
 )
 
 @HiltViewModel
@@ -54,7 +55,8 @@ class HomeViewModel @Inject constructor(
                         _uiState.value = _uiState.value.copy(
                             isLoading = false,
                             data = result.data,
-                            error = null
+                            error = null,
+                            isOffline = result.isOffline
                         )
                     }
                     is Result.Error -> {

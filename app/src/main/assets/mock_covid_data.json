@@ -1,0 +1,28 @@
+[
+  {
+    "country": "Mexico",
+    "region": "",
+    "cases": {
+      "total": 3911714,
+      "new": 44293,
+      "active": 222221,
+      "critical": 4798,
+      "recovered": 3251038,
+      "1M_pop": "30339",
+      "total_1M_pop": "30339"
+    },
+    "deaths": {
+      "total": 301469,
+      "new": 195,
+      "1M_pop": "2338",
+      "total_1M_pop": "2338"
+    },
+    "tests": {
+      "total": 13506282,
+      "1M_pop": "104749",
+      "total_1M_pop": "104749"
+    },
+    "day": "2022-01-14",
+    "time": "2022-01-14T22:45:03+00:00"
+  }
+]

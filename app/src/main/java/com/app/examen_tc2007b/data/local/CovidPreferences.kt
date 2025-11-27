@@ -8,7 +8,7 @@ import javax.inject.Singleton
 
 @Singleton
 class CovidPreferences @Inject constructor(
-    @ApplicationContext context: Context
+    @ApplicationContext private val context: Context
 ) {
     private val prefs: SharedPreferences = context.getSharedPreferences("covid_prefs", Context.MODE_PRIVATE)
 
@@ -26,5 +26,13 @@ class CovidPreferences @Inject constructor(
 
     fun getLastJson(): String? {
         return prefs.getString("last_json", null)
+    }
+
+    fun getMockJson(): String {
+        return try {
+            context.assets.open("mock_covid_data.json").bufferedReader().use { it.readText() }
+        } catch (e: Exception) {
+            "[]"
+        }
     }
 }
