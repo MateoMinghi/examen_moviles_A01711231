@@ -10,7 +10,12 @@ Android
 
 ---
 
-Este proyecto sigue los conceptos utilizados en clase.
+Este proyecto sigue los conceptos utilizados en clase:
+
+arquitectura mvvm + clean architecture (capas data, domain, presentation)
+
+Hilt
+Retrofit
 
 
 MyApplication/
