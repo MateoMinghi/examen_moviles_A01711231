@@ -1,4 +1,4 @@
-package com.app.examen_tc2007b.ui.theme
+package com.app.examen_tc2007b.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

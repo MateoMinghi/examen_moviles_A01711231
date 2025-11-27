@@ -16,7 +16,7 @@ arquitectura mvvm + clean architecture (capas data, domain, presentation)
 
 Hilt
 Retrofit
-
+sealed class
 
 MyApplication/
 ├── gradle/

@@ -3,29 +3,37 @@ package com.app.examen_tc2007b
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.app.examen_tc2007b.presentation.screens.home.HomeScreen
-import com.app.examen_tc2007b.ui.theme.Examen_tc2007bTheme
+import androidx.navigation.compose.rememberNavController
+import com.app.examen_tc2007b.presentation.common.BottomNavigationBar
+import com.app.examen_tc2007b.presentation.navigation.NavigationGraph
+import com.app.examen_tc2007b.presentation.theme.Examen_moviles_A01711231Theme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
-            Examen_tc2007bTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Box(modifier = Modifier.padding(innerPadding)) {
-                        HomeScreen()
-                    }
-                }
+            Examen_moviles_A01711231Theme {
+                MainScreen()
             }
         }
+    }
+}
+
+@Composable
+fun MainScreen() {
+    val navController = rememberNavController()
+    Scaffold(
+        bottomBar = { BottomNavigationBar(navController = navController) }
+    ) { innerPadding ->
+        NavigationGraph(
+            navController = navController,
+            modifier = Modifier.padding(innerPadding)
+        )
     }
 }

@@ -1,4 +1,4 @@
-package com.app.examen_tc2007b.ui.theme
+package com.app.examen_tc2007b.presentation.theme
 
 import android.app.Activity
 import android.os.Build
@@ -34,7 +34,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun Examen_tc2007bTheme(
+fun Examen_moviles_A01711231Theme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
