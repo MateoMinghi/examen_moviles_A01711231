@@ -49,7 +49,8 @@ fun HeatmapItem(
 ) {
     // Calculate color intensity based on new cases
     val intensity = (stats.newCases.toFloat() / maxCases.toFloat()).coerceIn(0f, 1f)
-    val color = Color.Red.copy(alpha = 0.1f + (intensity * 0.9f))
+    val baseColor = MaterialTheme.colorScheme.tertiary
+    val color = baseColor.copy(alpha = 0.1f + (intensity * 0.9f))
 
     Box(
         modifier = Modifier

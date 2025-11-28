@@ -3,6 +3,7 @@ package com.app.examen_tc2007b.presentation.common
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -17,7 +18,8 @@ import com.app.examen_tc2007b.presentation.navigation.Screen
 fun BottomNavigationBar(navController: NavController) {
     val items = listOf(
         Screen.Home,
-        Screen.Date
+        Screen.Date,
+        Screen.Global
     )
 
     NavigationBar {
@@ -30,12 +32,14 @@ fun BottomNavigationBar(navController: NavController) {
                     when (screen) {
                         Screen.Home -> Icon(Icons.Filled.Home, contentDescription = "Country")
                         Screen.Date -> Icon(Icons.Filled.DateRange, contentDescription = "Date")
+                        Screen.Global -> Icon(Icons.Filled.Info, contentDescription = "Global")
                     }
                 },
                 label = {
                     when (screen) {
                         Screen.Home -> Text("Country")
                         Screen.Date -> Text("Date")
+                        Screen.Global -> Text("Global")
                     }
                 },
                 selected = currentRoute == screen.route,
