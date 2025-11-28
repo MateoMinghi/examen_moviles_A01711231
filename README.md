@@ -85,8 +85,18 @@ MyApplication/
 
 
 
+### Casos de Covid por país
 
 Para los casos de Covid por país, la interfaz es similar a la de los commits de Github. Al darle click a un recuadro, se muestran los casos registrados ese día.
 
+![Interfaz de casos por país](11175.png)
+
+
+### Casos por fecha
+
 
 Para los casos por fecha, pongo una gráfica de barras horizontal, lo que lo hace fácil de comparar con otros países
+
+![Interfaz de casos por fecha](11176.png)
+
+
