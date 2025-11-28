@@ -11,6 +11,7 @@ import com.app.examen_tc2007b.presentation.screens.home.HomeScreen
 sealed class Screen(val route: String) {
     object Home : Screen("home")
     object Date : Screen("date")
+    object Global : Screen("global")
 }
 
 @Composable
@@ -25,6 +26,9 @@ fun NavigationGraph(navController: NavHostController, modifier: Modifier = Modif
         }
         composable(Screen.Date.route) {
             DateScreen()
+        }
+        composable(Screen.Global.route) {
+            com.app.examen_tc2007b.presentation.screens.global.GlobalScreen()
         }
     }
 }
