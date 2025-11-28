@@ -19,7 +19,7 @@ fun HomeScreen(
     val uiState by viewModel.uiState.collectAsState()
     val context = LocalContext.current
     var expanded by remember { mutableStateOf(false) }
-    val countries = listOf("Canada", "Albania")
+    val countries = listOf("Canada", "Albania", "Mexico", "Afghanistan", "Algeria", "Andorra", "Angola", "Brazil", "Bolivia", "Botswana" )
     var selectedCountry by remember { mutableStateOf("") }
 
     // Auto-fill search query if last country loaded
