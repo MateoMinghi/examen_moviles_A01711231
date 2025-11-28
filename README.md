@@ -1,23 +1,26 @@
-# examen_moviles_A01711231
-Examen TC2007B
+# Examen Moviles A01711231
+## Información del Proyecto
 
-Mateo Minghi
-
-A01711231.
-
-Android
+- **Materia**: TC2007B
+- **Estudiante**: Mateo Minghi
+- **Matrícula**: A01711231
+- **Plataforma**: Android
 
 
 ---
 
+## Descripción
+
 Este proyecto sigue los conceptos utilizados en clase:
 
-arquitectura mvvm + clean architecture (capas data, domain, presentation)
+- Arquitectura MVVM + Clean Architecture (capas data, domain, presentation)
+- Hilt
+- Retrofit
+- Sealed class
 
-Hilt
-Retrofit
-sealed class
+## Arquitectura del Proyecto
 
+```
 MyApplication/
 ├── gradle/
 │   └── libs.versions.toml       <-- Catálogo de versiones (Centraliza dependencias)
@@ -76,6 +79,7 @@ MyApplication/
 │   │   │               └── 📂 theme/
 │   │   │                   ├── Color.kt
 │   │   │                   └── Theme.kt
+```
 
 
 
@@ -85,18 +89,16 @@ MyApplication/
 
 
 
-### Casos de Covid por país
+## Funcionalidades
+
+### Casos de Covid por País
 
 Para los casos de Covid por país, la interfaz es similar a la de los commits de Github. Al darle click a un recuadro, se muestran los casos registrados ese día.
 
 ![Interfaz de casos por país](11175.png)
 
+### Casos por Fecha
 
-### Casos por fecha
-
-
-Para los casos por fecha, pongo una gráfica de barras horizontal, lo que lo hace fácil de comparar con otros países
+Para los casos por fecha, pongo una gráfica de barras horizontal, lo que lo hace fácil de comparar con otros países.
 
 ![Interfaz de casos por fecha](11176.png)
-
-
